@@ -66,7 +66,7 @@ namespace CloudStorageSample
             {
                 using (var fileStream = File.Create(Path.Combine(downloadFolder, FileName)))
                 {
-                    storageClientDetail.DownloadObject(bucketName, "Sonali.txt", fileStream);
+                    storageClientDetail.DownloadObject(bucketName, FileName, fileStream);
                 }   
                     if (Directory.GetFiles(downloadFolder).Any())
                     {
