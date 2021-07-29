@@ -13,18 +13,25 @@ namespace ConsoleApplicationUsingFramework
             //Code reference  https://gist.github.com/henrikj242/af06ac41fc9554dab387c0bb3a994f85
             string message = "Dot Net example: Upload file to Google Cloud Bucket. And also download";
            
-            string bucketName = "bucketname"; //giving the bucket name
+            string bucketName = "bucketName"; //giving the bucket name
 
             //Uploading the file
             Console.WriteLine("Enter the filename to be archived");
             string fileName = Console.ReadLine();
-            string Result= FileStorageClass.UploadFile(bucketName,fileName);
+            string Result = FileStorageClass.UploadFile(bucketName, fileName);
             Console.WriteLine(Result);
 
-            //Downloading the file
+            ////Downloading the file
             Console.WriteLine("Enter the filename to be retrived");
             string DownloadfileName = Console.ReadLine();
             FileStorageClass.DownloadFile(bucketName, DownloadfileName);
+
+            //Upload a folder
+            Console.WriteLine("Enter the foldername to be created");
+            string UploadfolderName = Console.ReadLine();
+            Console.WriteLine("Enter the filename to be uploaded");
+            string UploadFileName = Console.ReadLine();
+            var res= FileStorageClass.AddFolder(bucketName, UploadfolderName, UploadFileName);
 
 
             Console.WriteLine($"Platform: .NET Core 2.0");

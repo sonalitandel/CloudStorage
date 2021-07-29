@@ -86,5 +86,23 @@ namespace CloudStorageSample
             }
             return null;
         }
+
+        public static string AddFolder(string bucketName,string folder,string FileName)
+        {
+            var storageClientDetail = ConnectionSetUp();
+            if (!folder.EndsWith("/"))
+                folder += "/"+FileName;
+
+            //var content = Encoding.UTF8.GetBytes("");
+
+            //storageClientDetail.UploadObject(bucketName, folder, "application/x-directory", new MemoryStream(content));
+            using (var fileStream = new FileStream(@"C:\All Examples\" + FileName.Trim(), FileMode.Open,
+                   FileAccess.Read, FileShare.Read)) //File that is supposed to be uploaded
+            {
+                var result = storageClientDetail.UploadObject(bucketName, folder, "application/x-directory", fileStream);
+                return result.MediaLink;
+            }
+
+        }
     }
 }
